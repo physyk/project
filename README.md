@@ -1,26 +1,26 @@
 # Monograph project
 
-    This a draft for my monograph project.
+This a draft for my monograph project.
 
 # Deadline
 
-    January 15th
+January 15th
 
 # Scope
 
-    Build
+Build
 
-        * a website with demo code and 'theory' 
+* a website with demo code and 'theory' 
 
-        * a pdf to deliver to UFRJ
+* a pdf to deliver to UFRJ
 
-        * a slide presentation    
+* a slide presentation    
 
 # Structure
 
 ## Chapter 1 - Introduction
 
-    dfasdf
+dfasdf
 
 ## Chapter 2 - How does a physics engine work?
 

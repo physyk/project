@@ -26,7 +26,7 @@ dfasdf
 
 ### Translation
 
-Euler
+Euler and Verlet integration.
 
 ### Rotation
 
@@ -35,6 +35,21 @@ Euler
 
 
 ## Chapter 3 - MatterJS, a physics engine for physics teaching
+
+
+## Apendice
+
+### Javascript
+
+### Graphical renderization
+
+
+
+## Why MatterJS ?
+
+## Examples
+
+#### Newton Craddle
 
 
 ## Chapter 4 - Conclusion

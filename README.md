@@ -37,7 +37,7 @@ Euler and Verlet integration.
 ## Chapter 3 - MatterJS, a physics engine for physics teaching
 
 
-## Apendice
+## Apendix
 
 ### Javascript
 

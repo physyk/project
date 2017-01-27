@@ -20,15 +20,17 @@ Build
 
 ## Chapter 1 - Introduction
 
-dfasdf
+
 
 ## Chapter 2 - How does a physics engine work?
 
 ### Translation
 
-Euler and Verlet integration.
+Euler and Verlet integration. Discusson of translation representation in the graphical computation.
 
 ### Rotation
+
+
 
 ### Collision
 

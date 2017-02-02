@@ -1,0 +1,5 @@
+http://www.physics.udel.edu/~bnikolic/teaching/phys660/numerical_ode/node5.html
+
+* Thus, the global error associated with the Verlet algorithm is third order for the position and second-order for the velocity. (verify) 
+
+* When using computers which always operate with finite numerical precision, such an operation results in a loss of numerical precision and may give rise to substantial roundoff error.

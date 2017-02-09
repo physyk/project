@@ -23,6 +23,43 @@ Ao longo do quarto e último capítulo, iremos vamos fazer um apanhado sobre o q
 Todos as simulações aqui apresentadas estarão disponível no endereço http://physik.github.io. 
 
 
+##Euler e Verlet 
+
+Para descrição mecânica de um ponto material necissatamos apenas da sua posição e velocidade para determinados instantes de tempo.
+
+O procedimento numérico mais elementar a que podemos recorrer para simular computacionalmente esse sistema é o conhecemos por método de Euler.
+
+A partir dele, os dois parametros que desejamos conhecer podem ser descritos do seguinte modo.
+
+$$x(t+\delta t) = x(t) + v(t)\delta t $$
+$$v(t+\delta t) = v(t) + a(t)\delta t $$
+
+O conjunto de passos que podemos seguir, o que conhecemos como algoritmo, para a determinação dos consecutivos valores de $v$ e $x$ poderia ser o seguinte
+
+1. determinamos para $t_0$ ,nossa tempo inicial, $x(t_0)$ e $v(t_0)$ e determinamos o valor da aceleração do sistema nesse ponto, $a_0$. Em um instante seguinte teremos
+
+$$x(t_1) = x(t_0) + v(t_0)\delta t $$
+$$v(t_1) = v(t_0) + a(t_0)\delta t $$
+
+2. Utilizando os valores calculados para $x_1$ e $v_1$, teriamos no passo seguinte. 
+
+$$x(t_2) = x(t_1) + v(t_1)\delta t $$
+$$v(t_2) = v(t_1) + a(t_1)\delta t $$
+
+3. Repetindos os passos acima tantas vezes quanto necessário, poderiamos fazer a seguinte generalização.
+
+$$x(t_n) = x(t_(n-1)) + v(t_(n-1))\delta t $$
+$$v(t_n) = v(t_(n-1)) + a(t_(n-1))\delta t $$
+
+O conhecimento do valor numérico de $x$ e $v$ durante o intervalo deseja desejado, nos facultaria a descrição completa do comportamento do sistema.
+
+
+
+
+
+
+
+
 
 
 

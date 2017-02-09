@@ -1,8 +1,8 @@
-function acelerationX(x) {
+function acelerationX(x,v) {    
     return 0
 }
 
-function acelerationY(y) {
+function acelerationY(y,v) {
     return -9.81
 }
 

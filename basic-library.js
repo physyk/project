@@ -16,10 +16,10 @@ function clone(object) {
 
 
 function verlet(r0, v0, aceleration, deltaT) {
-    let r, v, a = aceleration(r0)
-
+    let r, v, a = aceleration(r0,v0)
+    
     r = r0 + v0 * deltaT + a / 2 * Math.pow(deltaT, 2)
-    v = v0 + (aceleration(r,v) + a) / 2 * deltaT
+    v = v0 + (aceleration(r,v0) + a) / 2 * deltaT
 
     return { r, v }
 }
@@ -29,7 +29,7 @@ function euler(r0, v0, aceleration, deltaT) {
     let r, v
 
     r = r0 + v0 * deltaT
-    v = v0 + aceleration(r,v) * deltaT
+    v = v0 + aceleration(r,v0) * deltaT
 
     return { r, v }
 }

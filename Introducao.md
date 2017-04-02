@@ -25,9 +25,9 @@ Todos as simulações aqui apresentadas estarão disponível no endereço http:/
 
 ##Euler e Verlet 
 
-Para descrição mecânica de um ponto material necissatamos apenas da sua posição e velocidade para determinados instantes de tempo.
+Para descrição mecânica de um ponto material necissatamos apenas da sua posição e velocidade em determinados instantes de tempo.
 
-O procedimento numérico mais elementar a que podemos recorrer para simular computacionalmente esse sistema é o conhecemos por método de Euler.
+O procedimento numérico mais elementar a que podemos recorrer para simulação desse sistema é o conhecemos por método de Euler.
 
 A partir dele, os dois parametros que desejamos conhecer podem ser descritos do seguinte modo.
 
@@ -36,7 +36,7 @@ $$v(t+\delta t) = v(t) + a(t)\delta t $$
 
 O conjunto de passos que podemos seguir, o que conhecemos como algoritmo, para a determinação dos consecutivos valores de $v$ e $x$ poderia ser o seguinte
 
-1. determinamos para $t_0$ ,nossa tempo inicial, $x(t_0)$ e $v(t_0)$ e determinamos o valor da aceleração do sistema nesse ponto, $a_0$. Em um instante seguinte teremos
+1. para $t_0$ ,nosso tempo inicial, calculamos $x(t_0)$ e $v(t_0)$ e determinamos valor da aceleração nesse instante, $a_0$. Em um instante seguinte teremos
 
 $$x(t_1) = x(t_0) + v(t_0)\delta t $$
 $$v(t_1) = v(t_0) + a(t_0)\delta t $$
@@ -51,7 +51,12 @@ $$v(t_2) = v(t_1) + a(t_1)\delta t $$
 $$x(t_n) = x(t_(n-1)) + v(t_(n-1))\delta t $$
 $$v(t_n) = v(t_(n-1)) + a(t_(n-1))\delta t $$
 
-O conhecimento do valor numérico de $x$ e $v$ durante o intervalo deseja desejado, nos facultaria a descrição completa do comportamento do sistema.
+O os valores numérico de $x$ e $v$ durante o intervalo deseja desejado nos faculta assim a descrição do comportamento do corpo.
+
+
+### Lançamento de projéteis
+
+Com a finalidades ilustratitivas, iremos simular o lançamento de projeto com 
 
 
 

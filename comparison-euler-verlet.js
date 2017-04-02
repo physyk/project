@@ -59,31 +59,31 @@ const simulationInfo = {
 const {eulerData, verletData, realDataArray} = numericalSolution(simulationInfo)
       , realSolutionData = realSolution(simulationInfo)  
 
-var trace2 = {
+var euler = {
     x: eulerData.x,
     y: eulerData.y,
     mode: 'markers',
     name: 'Euler'
 };
 
-var trace3 = {
+var verlet = {
     x: verletData.x,
     y: verletData.y,
     mode: 'markers',
     name: 'Verlet'
 };
 
-var trace4 = {
+var real = {
     x: realSolutionData.x,
     y: realSolutionData.y,
     mode: 'markers',
     name: 'Real Solution'
 };
 
-var data = [trace2, trace3, trace4];
+var data = [euler, real];
 
 var layout = {
-    title: 'Comparação Verlet Vs Euler para um lançamento de projétil de 30m/s ',
+    title: 'Comparação Verlet vs Euler para um lançamento de projétil de 30m/s ',
     height: 700,
     width: 1000
 };

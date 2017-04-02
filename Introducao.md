@@ -25,6 +25,8 @@ Todos as simulações aqui apresentadas estarão disponível no endereço http:/
 
 ##Euler e Verlet 
 
+###Euler
+
 Para descrição mecânica de um ponto material necissatamos apenas da sua posição e velocidade em determinados instantes de tempo.
 
 O procedimento numérico mais elementar a que podemos recorrer para simulação desse sistema é o conhecemos por método de Euler.
@@ -54,9 +56,13 @@ $$v(t_n) = v(t_(n-1)) + a(t_(n-1))\delta t $$
 O os valores numérico de $x$ e $v$ durante o intervalo deseja desejado nos faculta assim a descrição do comportamento do corpo.
 
 
-### Lançamento de projéteis
+### Euler no lançamento de um projétil
 
-Com a finalidades ilustratitivas, iremos simular o lançamento de projeto com 
+Lancemos um projétil a 30 m/s, com angulação de $30\deg$ com relação ao chão. Uma descrição simplificada para trajetória é dada do seguinte modo
+
+//
+    DESCRIÇÃO DO MODELO
+//
 
 
 

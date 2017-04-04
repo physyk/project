@@ -4,47 +4,49 @@ class Realidade {
         this.g = gravidade
         this.dt = 1 / 60
         this.corpos = []
-        this.alturaPeDireito = altura
-
-        //coeficiente de restituicao com o chao
-        this.e = 0.3
     }
 
     inserirCorpos(corpos) {
         corpos.forEach(corpo => this.corpos.push(corpo))
     }
 
-    corrigirEfeitoPossivelColisao(corpo) {
-        const { altura } = corpo.dimensoes()
+    verletVetorial(r,v, funcaoAceleracao) {                   
+        let a = funcaoAceleracao(r), {dt} = this
 
-        let { vy } = corpo.velocidade()
-            , { y } = corpo.posicao()
+        let termoVelocidade = v.multiplicar(dt)
+            , termoAceleracao =  a.multiplicar(Math.pow(dt, 2)*1/2)
 
-        if (y + altura / 2 >= this.alturaPeDireito)
-            vy *= - this.e
+        r = r.adicionar(termoVelocidade).adicionar(termoAceleracao)
+       
+        termoAceleracao = a.adicionar(funcaoAceleracao(r)).multiplicar(1/2)
+        v = v.adicionar(termoAceleracao)
 
-        corpo.transladar({ vy, y })
+        return { novaPosicao:r, novaVelocidade:v }
     }
 
-    verlet({ y, vy }) {
-        let { dt, g } = this
-            , a = g
+    transladarCorpos(){
+        this.corpos.forEach(corpo => {            
+            let {r, v, a}= corpo.variaveisTranslacionais()
+           
+            const {novaPosicao, novaVelocidade} = this.verletVetorial(r,v,a)            
+           
+            corpo.transladar({r:novaPosicao, v:novaVelocidade})
+        })
+    }
 
-        y = y + vy * dt + 1 / 2 * a * Math.pow(dt, 2)
-        vy = vy + 1 / 2 * (a + a)
+    rotacionarCorpos(){
+        this.corpos.forEach(corpo => {
+            const {theta, omega, alpha} = corpo.variaveisRotacionais()
 
-        return { y, vy }
+            const {x, v} = this.verlet(theta, omega, alpha)
+
+            corpo.rotacionar({ theta: x, omega: v })
+        })
     }
 
     run() {
-
-        this.corpos.forEach(corpo => {
-            let { vy } = corpo.velocidade()
-                , { y } = corpo.posicao()
-
-            corpo.transladar(this.verlet({ y, vy }))
-            realidade.corrigirEfeitoPossivelColisao(corpo)
-        })
+        this.transladarCorpos()
+        this.rotacionarCorpos()
     }
 
 }

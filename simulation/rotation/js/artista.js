@@ -22,11 +22,13 @@ class Artista {
 
         corpos.forEach(corpo => {
             const { altura, largura, cor } = corpo
-                , { x, y } = corpo.posicao()
+                , { r } = corpo.variaveisTranslacionais()
+                , { theta } = corpos.variaveisRotacionais()
 
             c.save()
 
-            c.translate(x, y)
+            c.translate(r.x, r.y)
+            c.rotate(theta)
 
             c.beginPath();
             c.rect(-largura / 2, -altura / 2, largura, altura);

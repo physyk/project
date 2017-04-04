@@ -26,19 +26,23 @@ class Realidade {
         corpo.transladar({ vy, y })
     }
 
-    run() {
+    verlet({ y, vy }) {
         let { dt, g } = this
             , a = g
+
+        y = y + vy * dt + 1 / 2 * a * Math.pow(dt, 2)
+        vy = vy + 1 / 2 * (a + a)
+
+        return { y, vy }
+    }
+
+    run() {
 
         this.corpos.forEach(corpo => {
             let { vy } = corpo.velocidade()
                 , { y } = corpo.posicao()
 
-            y = y + vy * dt + 1 / 2 * a * Math.pow(dt, 2)
-            vy = vy + 1 / 2 * (a + a)
-
-            corpo.transladar({ y, vy })
-
+            corpo.transladar(this.verlet({ y, vy }))
             realidade.corrigirEfeitoPossivelColisao(corpo)
         })
     }

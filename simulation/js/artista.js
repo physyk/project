@@ -3,17 +3,6 @@ class Artista {
     constructor() {
         this.canvas = document.querySelector("canvas")
         this.contexto = this.canvas.getContext('2d')
-
-        this.desenharNivel();
-    }
-
-    desenharNivel() {
-        const ctx = this.contexto
-
-        ctx.beginPath();
-        ctx.moveTo(0, 600);
-        ctx.lineTo(600, 600);
-        ctx.stroke();
     }
 
     limparQuadro() {
@@ -21,7 +10,6 @@ class Artista {
             , larguraQuadro = this.canvas.clientWidth
 
         this.contexto.clearRect(0, 0, larguraQuadro, alturaQuadro);
-        this.desenharNivel();
     }
 
     dimensoesQuadro() {
@@ -39,8 +27,7 @@ class Artista {
 
             c.save()
 
-            //sabemos que centro de massa do retangula corresponde ao seu geométrico
-            c.translate(x + largura / 2, y + altura / 2)
+            c.translate(x, y)
 
             c.beginPath();
             c.rect(-largura / 2, -altura / 2, largura, altura);

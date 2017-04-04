@@ -4,10 +4,10 @@ class Realidade {
         this.g = gravidade
         this.dt = 1 / 60
         this.corpos = []
-        this.alturaPeDireito = 600
+        this.alturaPeDireito = altura
 
         //coeficiente de restituicao com o chao
-        this.e = 0.1
+        this.e = 0.3
     }
 
     inserirCorpos(corpos) {

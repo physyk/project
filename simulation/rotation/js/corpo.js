@@ -8,12 +8,18 @@ class Corpo {
         const { largura, altura } = dimensoes
         this.largura = largura
         this.altura = altura
+        this.braco = new Vector(-largura / 2, -altura / 2)
 
         const { x, y, vy, vx } = condicoesIniciais
         this.r = new Vector(x, y)
         this.v = new Vector(vx, vy)
 
-        this.corda.posicionar(this.extremidadeAmarrada())
+        //TODO - CALCULAR
+        this.inercia = 1 / 12 * this.massa * (Math.pow(altura, 2) + Math.pow(largura, 2))
+
+        this.aceleracaoLinear = this.aceleracaoLinear.bind(this)
+        this.aceleracaoRotacional = this.aceleracaoLinear.bind(this)
+
     }
 
     dimensoes() {
@@ -22,7 +28,6 @@ class Corpo {
     }
 
     transladar({ r, v }) {
-        this.corda.posicionar(this.extremidadeAmarrada(r))
         this.r = r
         this.v = v
     }
@@ -32,32 +37,31 @@ class Corpo {
         this.omega = omega
     }
 
-    pegarCorda() {
-        return this.corda
+    peso() {
+        return this.gravidade.multiplicar(this.massa)
     }
 
-    extremidadeAmarrada(r) {
-        const { largura, altura } = this.dimensoes()
-            , { x, y } = r || this.r
+    extremidadeAmarrada(centroMassa) {
+        centroMassa = centroMassa || this.r
 
-        //a extremidade amarrada sera sempre a ponta esquerda no topo.    
-        return new Vetor(x - largura / 2, y - altura / 2)
+        const extremidade = centroMassa.adicionar(this.braco)
+        return extremidade.rotacionar(this.theta, centroMassa)
     }
 
     aceleracaoLinear(r) {
-        const novaExtremidade = this.extremidadeAmarrada(r)
+        const extremidade = this.extremidadeAmarrada(r)
+            , tensao = this.corda.tensao(extremidade)
 
-        const aceleracaoCorda = this.corda.tensao(novaExtremidade).multiplicar(1 / this.m)
-        return this.gravidade.adicionar(aceleracaoCorda)
+        return this.peso().adicionar(tensao).multiplicar(1 / this.massa)
     }
 
-    aceleracaoRotacional(r) {
-        const novaExtremidade = this.extremidadeAmarrada(r)
+    aceleracaoRotacional() {
+        const { r: centroMassa } = this
+            , extremidade = this.extremidadeAmarrada()
+            , tensao = this.corda.tensao(extremidade)
+            , torque = centroMassa.produtoVetorial(tensao)
 
-        const torque = novaExtremidade.subtrair(r).produtoVetorial(this.corda.tensao(novaExtremidade))
-            , momentoDeInercia = this.momentoDeInercia()
-
-        return torque / momentoDeInercia
+        return torque.multiplicar(1 / this.inercia)
     }
 
     variaveisTranslacionais() {
@@ -67,7 +71,6 @@ class Corpo {
 
     variaveisRotacionais() {
         const { theta, omega, aceleracaoRotacional } = this
-
-        return { theta, omega, alpha: this.aceleracaoRotacional }
+        return { theta, omega, alpha: aceleracaoRotacional }
     }
 }

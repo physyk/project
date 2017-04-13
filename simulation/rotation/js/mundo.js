@@ -10,7 +10,7 @@ class Realidade {
         corpos.forEach(corpo => this.corpos.push(corpo))
     }
 
-    verletVetorial(r, v, funcaoAceleracao) {
+    verlet(r, v, funcaoAceleracao) {
         let a = funcaoAceleracao(r), { dt } = this
 
         let termoVelocidade = v.multiplicar(dt)
@@ -24,20 +24,20 @@ class Realidade {
         return { novaPosicao: r, novaVelocidade: v }
     }
 
-    verletEscalar(p, v, funcaoAceleracao) {
-        let a = funcaoAceleracao(p), { dt } = this
+    euler(p, v, funcaoAceleracao) {
+        let a = funcaoAceleracao(), { dt } = this
 
-        p = x + v * dt + 1 / 2 * a * Math.pow(dt, 2)
-        v = v + 1 / 2 * (a + funcaoAceleracao(p))
+        v = v + a * dt
+        p = p + v * dt
 
-        return { novaPosicao: p, novaVelocidade: v }
+        return { p, v }
     }
 
     transladarCorpos() {
         this.corpos.forEach(corpo => {
             let { r, v, a } = corpo.variaveisTranslacionais()
 
-            const { novaPosicao, novaVelocidade } = this.verletVetorial(r, v, a)
+            const { novaPosicao, novaVelocidade } = this.verlet(r, v, a)
 
             corpo.transladar({ r: novaPosicao, v: novaVelocidade })
         })
@@ -47,7 +47,7 @@ class Realidade {
         this.corpos.forEach(corpo => {
             const { theta, omega, alpha } = corpo.variaveisRotacionais()
 
-            const { novaPosicao: theta, novaVelocidade: omega } = this.verlet(theta, omega, alpha)
+            const { p: theta, v: omega } = this.euler(theta, omega, alpha)
 
             corpo.rotacionar({ theta, omega })
         })

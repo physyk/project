@@ -1,6 +1,11 @@
 
 class Vetor {
 
+    constructor(x,y){
+        this.x = x
+        this.y = y
+    }
+
     rotacionar(angulo, centro) {
 
         centro = centro || new Vetor(0, 0)

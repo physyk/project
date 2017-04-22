@@ -23,9 +23,11 @@ class Artista {
         corpos.forEach(corpo => {
             const { altura, largura, cor } = corpo
                 , { r } = corpo.variaveisTranslacionais()
-                , { theta } = corpos.variaveisRotacionais()
+                , { theta } = corpo.variaveisRotacionais()
 
-            c.save()
+            // console.log(r.x, r.y, theta)
+
+            c.save() 
 
             c.translate(r.x, r.y)
             c.rotate(theta)

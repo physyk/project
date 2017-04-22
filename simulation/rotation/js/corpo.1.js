@@ -1,7 +1,7 @@
 class Corpo {
     constructor({ condicoesIniciais, dimensoes, corda, cor = 'red' }) {
         this.cor = cor
-        this.gravidade = new Vector(0, 9.8)
+        this.gravidade = new Vetor(0, 9.8)
         this.massa = 1
         this.corda = corda
 
@@ -10,8 +10,8 @@ class Corpo {
         this.altura = altura
 
         const { x, y, vy, vx } = condicoesIniciais
-        this.r = new Vector(x, y)
-        this.v = new Vector(vx, vy)
+        this.r = new Vetor(x, y)
+        this.v = new Vetor(vx, vy)
 
         this.corda.posicionar(this.extremidadeAmarrada())
     }

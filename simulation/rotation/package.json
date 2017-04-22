@@ -1,0 +1,13 @@
+{
+  "name": "simulation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "b": "browser-sync start --serve --no-notify --files  'js/*.js' 'css/*.css' index.html",
+    "start": "serve ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -12,7 +12,7 @@ A linguagem de programação aqui utilizada será o Javascript. Essa escolha est
 
 Esse texto também visa uma finalidade didática, oferecendo ao professor de física um material de apoio para introdução do tema da computação física em sala de aula.
 
-A estrutura dessa trabalho é formada pela apresentação do modelo de Verlet e, de outra com propósito similar mas mais simples: o método de Euler. Uma breve comparação entre as duas será esboçada, numa discução em que vantagens de desvantagens de cada uma será discutida. Ao fim mostraremos porque o primeiro método é mais apropriado.
+A estrutura dessa trabalho é formada pela apresentação do modelo de Verlet e, de outra com propósito similar mas mais simples: o método de Euler. Uma breve comparação entre as duas será esboçada, numa discussão em que vantagens de desvantagens de cada uma será discutida. Ao fim mostraremos porque o primeiro método é mais apropriado.
 
 Em seguida lançaremos as bases computacionais propriamente dita, apresentando sucintamente a linguagem Javascript e explicando os seus aspectos conceituais mais importantes para o nosso objetivo.
 

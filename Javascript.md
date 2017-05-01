@@ -100,7 +100,7 @@ A diferença entre `const` e `let` é mais pragmática.
 
 Como sugere a nomenclatura, `const` é usada para a definição de constantes, não permitindo assim modificações futuras da variável. Ela será portanto `read-only`.
 
-A palavra-chave `let`, que pode ser traduzida livremente como "Seja", é mais flexível, pois permite a mudança futura do valor da variável.
+A palavra-chave `let`, que pode ser traduzida livremente como "Seja", é mais flexível, pois permite mudanças futuras.
 
 Considere os exemplos
 
@@ -259,6 +259,105 @@ A diferença entre `undefined` e `null` não é apenas semântica. Em quase toda
 ```
 
 Perceba que em uma operação algébrica `null` é interpretado como 0. 
+
+
+###Boolean
+
+Por `boolean` designamos os valores lógicos `true` e `false`.
+
+```javascript
+
+    var verdadeiro = true
+    console.log(typeof verdadeiro) //Imprime "boolean" 
+
+    var falso = false
+    console.log(typeof falso) //Imprime "boolean" 
+
+```
+
+###Objeto
+
+//FAZER!
+
+
+
+###Array
+
+`Array` é uma coleção ordenada de valores. Cada elemento dessa coleção é indexada, podendo inclusive ser de tipos diferentes.
+
+Exemplos:
+
+```javascript
+    const a = [] //
+    const b = ['1', '2', '3']
+    const c = ['', 2, null, false, undefined]
+    const d = [ 1, 2, 34 , 5, Infinity]
+```
+
+Caso quisermos saber o número de elementos de um `array` basta lermos sua propriedade `length`.
+
+```javascript
+    const a = [1,2,3]
+    console.log(a.length) //Imprime 3
+```
+
+####Lendo e alterando um array
+
+A indexação de um array é iniciada com o número 0. Assim caso quisermos ler o primeiro elemento, escrevemos `a[0]`; para o segundo `a[1]`; para o terceiro `a[2]` e daí por diante.
+
+Exemplo
+
+```javascript
+    const a = [1,2,3,7,5]
+    console.log(a[0])// Imprime 1
+    console.log(a[3])// Imprime 7
+```
+
+Como sabemos que o número total de elementos de `a` é dado por `a.length`, e que o enésimo item é indexado por `n-1`, o valor do ultimo será dado por `a[a.length-1]`.
+
+Exemplo
+
+```javascript
+
+    const a = ['a', 'b', 'c', 'd', 'e']
+
+    //Ultimo item de a
+    console.log(a[a.length - 1]) //imprime 'e'
+```
+
+A alteração de um array é também bastante simples. Basta que para o enésimo item da coleção a ser alterado você faça `a[n-1] = novoValor`.
+
+Exemplo
+
+```javascript
+
+    const a = [1,2,3,4,5]
+    a[3] = - Infinity
+
+    console.log(a) //Imprime [1,2,3, Infinity, 5]
+
+```
+
+Perceba que estamos "alterando" uma constante, o que seria contrário ao que dizermos na seção (INDICAR SEÇÃO). Aqui cabe um esclarecimento: ao usarmos `const` durante a declaração, o que permanece inalterado não é o valor da variável e sim o seu endereço alocado na memória, a sua referência. Isso impede uma reatribuição, uma substituição, do valor de `a`, mas não a alteração da sua estrutura, dos valores dos seus elementos.
+
+Exemplo:
+
+```javascript
+
+    //alteração da estrutura do 
+
+    const a = [1,2,3,4,5]
+    a[3] = - Infinity
+
+    console.log(a) //Imprime [1,2,3, Infinity, 5]
+
+    
+
+```
+
+
+
+
 
 
 

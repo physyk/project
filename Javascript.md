@@ -345,16 +345,15 @@ Exemplo:
 ```javascript
 
     //alteração da estrutura do 
-
     const a = [1,2,3,4,5]
     a[3] = - Infinity
 
     console.log(a) //Imprime [1,2,3, Infinity, 5]
 
-    
-
+    a = 3 // AVISO DE ERRO: "reatribuição de variável constante"
 ```
 
+Perceba que a alteração dos valores internos do array são permitidos, e não a reatribuição, a sua substituição.
 
 
 

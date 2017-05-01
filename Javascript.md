@@ -4,7 +4,7 @@ Javascript é uma linguagem utilizada essencialmente no ambiente web.
 
 Resultado de alguns meses de trabalho, a sua primeira versão foi introduzida por Brendan Eich em 1995, durante sua passagem pela Netscape.
 
-Há uma confusão recorrente entre Javascript e Java. Contudo, não há nenhuma correlação direta entre elas.
+Há uma confusão recorrente entre Javascript e Java. Contudo, não há nenhuma correlação direta entre eles.
 
 Desde o início, o desenvolvimento desta linguagem foi orientada para a construçao de websites, o que a restrigiu ao ambiente dos webrowsers. Porém, desde o final dos anos 2000 tem se visto uma evolução vestiginosa que vem permitindo o seu uso em servidores (NodeJS), bem como no desenvolvimento de aplicações para celulares(React Native, Cordova, Ionic, e etc).
 
@@ -20,7 +20,6 @@ A sintaxe básica do Javascript é similar a outras linguagem de programação. 
 * Javascript é `case-sensitive`, o que equivale a dizer que há diferenciação entre letras maiúsculas e minúsculas. Portanto `numero` e `Numero` serão indentificados diferentemente.
 
 * Blocos são delimitados por chaves `{ }`. Exemplos:
-
 
 ```javascript
     if (numbero > 2) {
@@ -95,7 +94,7 @@ Vejamos o que ocorre ao usarmos `const` e `let` dentro do mesmo.
 
 ```
 
-Perceba que no caso acima, a variáveis `numero` e `outroNumero` não estão disponíveis fora de `if`. O nosso console, neste caso, nos avisará que as variáveis estão indefinidas, ou *undefined*.
+Perceba que no caso acima, a variáveis `numero` e `outroNumero` não estão disponíveis fora de `if`. O nosso console, neste caso, nos avisará que as variáveis não estão definidas.
 
 A diferença entre `const` e `let` é mais pragmática. 
 
@@ -127,7 +126,6 @@ Em javascript as variáveis podem sete assumir tipos diferentes, mas apenas seis
 
 * **Number** - como em `1`, `2`, e `3`
 * **Boolean** - `true` ou `false`
-* **Null** - vazio, em tradução livre
 * **Undefined** - indefinido
 * **String** - usado para representação textual, como "Por que não me liberam dessa monografia?"
 * **Object** - Similar a um dicionário, esse tipo permite a associação de variáveis a palavras-chave. Explicações a frente.  
@@ -155,7 +153,7 @@ Para descrobrirmos o tipo de uma variável podemos usar o operador `typeof`. Exe
 
 `Number`'é o tipo utilizado quando necessitamos manipular números.
 
-Para procedemos com as quatro operações básicas os já conhecidos operadores `+`, `-`, `*` e `/` são suficientes. 
+Para procedemos com as quatro operações básicas, os já conhecidos operadores `+`, `-`, `*` e `/` são suficientes. 
 
 Caso necessitarmos de funções mais elaboradas, como um cálculo trigonométrico ou logarítmico, por exemplo, possivelmente a biblioteca `Math` nos dará o que precisamos.  Exemplifiquemos alguns de seus métodos.
 
@@ -192,7 +190,6 @@ Quando falamos de `Number` alguns fatos são dignos de nota.
 
 ```javascript
     10/0 //Infinity
-
     -10/0 // -Infinity
 ```
 
@@ -208,7 +205,17 @@ Quando falamos de `Number` alguns fatos são dignos de nota.
 
 ```
 
-Para concaternamos uma sequencia de caracteres basta apenas o uso do operador `+`
+Podemos descrobrir o número de caracteres de uma string com a propriedade `length`.
+
+```javascript
+    console.log("oi".length) //Imprime 2
+    console.log("o i".length) //Imprime 3. Perceba que o espaçamento entre 'o' e 'i' é contado.
+    console.log("o  i".length) //Imprime 4
+```
+
+
+Para concaternamos uma sequencia de caracteres basta apenas o uso do operador `+`.
+
 
 ```javascript
     var stringConcatenada = 'string' +  " concatenada"
@@ -227,19 +234,31 @@ Podemos transformar uma `number` em uma string da seguinte forma
     console.log(typeof convertido) //Imprime "string"
 ``` 
 
+#### `null` e `undefined`
+
+Tanto `undefined` quanto `null` são uteis quando quisermos expressar ausência de valor. 
+
+Quando declaramos uma variável e não atribuímos a ela nenhum valor, ela equivalerá a `undefined`. Exemplo:
+
+```javascript
+    var time
+    console.log(time) //Imprime "undefined"
+``` 
+
+Se ao a declararmos quisermos deixar claro que o seu conteúdo está vazio, podemos utilizar `null`. Com esse recurso estamos indicando que apesar de esperarmos uma valor para ela, seu conteúdo é nulo.
+
+A diferença entre `undefined` e `null` não é apenas semântica. Em quase todas as operações, ao não deixarmos explicito a ausencia de conteúdo, atribuindo a ela o valor `null`, o nosso compilador nos apontará um erro. O exemplo a seguir ilustra esse fato.
 
 
+```javascript
+    let numero = null
+    console.log(numero + 3) //Imprime 3
 
+    let outroNumero // como não atribuimos nenhum valor, outroNumero ainda está indefinido.
+    console.log(outroNumero + 3) //AVISO DE ERRO: "outroNumero não está definido"
+```
 
-
-
-
- 
-
-
-
-
-
+Perceba que em uma operação algébrica `null` é interpretado como 0. 
 
 
 

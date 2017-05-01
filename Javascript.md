@@ -125,16 +125,119 @@ Considere os exemplos
 
 Em javascript as variáveis podem sete assumir tipos diferentes, mas apenas seis serão relevantes para nós:   
 
+* **Number** - como em `1`, `2`, e `3`
 * **Boolean** - `true` ou `false`
 * **Null** - vazio, em tradução livre
 * **Undefined** - indefinido
-* **Number** - como em `1`, `2`, e `3`
 * **String** - usado para representação textual, como "Por que não me liberam dessa monografia?"
 * **Object** - Similar a um dicionário, esse tipo permite a associação de variáveis a palavras-chave. Explicações a frente.  
 
 Diferentemente de outras linguagens, como C, C++ ou Java, não é exigido durante a declaração da variável a explicitação o seu tipo. Para tanto, o uso de `var`, `let` ou `const` é suficiente.
 
 Dizemos que Javacript é uma linguagem de "tipagem dinânica", pois enquanto a variável `numero` pode equivaler a um número, na linha seguinte podemos substituir o seu valor por um sequência de caracteres, uma `string`.
+
+Para descrobrirmos o tipo de uma variável podemos usar o operador `typeof`. Exemplo.
+
+```javascript
+
+    var numero = 3
+    console.log(typeof numero) //Imprime "number"
+
+    var presidentes = {brasil: 'Michel Temer', eua: 'Donald Trump'} 
+    console.log(typeof presidentes) //Imprime "object"
+
+    const indefinido
+    console.log(typeof indefinido) //Imprime 'undefined'
+
+```
+
+####Number
+
+`Number`'é o tipo utilizado quando necessitamos manipular números.
+
+Para procedemos com as quatro operações básicas os já conhecidos operadores `+`, `-`, `*` e `/` são suficientes. 
+
+Caso necessitarmos de funções mais elaboradas, como um cálculo trigonométrico ou logarítmico, por exemplo, possivelmente a biblioteca `Math` nos dará o que precisamos.  Exemplifiquemos alguns de seus métodos.
+
+```javascript
+
+Math.abs(x) //Valor absolute de -3.
+Math.cos(x) //cosseno de um número
+Math.sin(x) //seno de um número
+Math.tan(x) //tangente de um número
+Math.exp(x) // e^x
+Math.log(x) // logaritmo na base 
+Math.pow(x,y)// base x elevada a potencia y
+Math.random() // retorna um número pseudo-aleatório entre 0 e 1
+Math.round(x) // retorna valor arredondado de um número x para o inteiro mais próximo
+Math.sqrt(x) // Retorna a raiz quadrada
+Math.floor(x) //Retorna o maior inteiro que é menor ou igual a x. Exemplo: Math.floor(2.9) = 2
+Math.ceil(x) //Retorna o menor inteiro que é maior ou igual a x. Exemplo: Math.ceil(2.9) = 3
+
+```
+
+Quando falamos de `Number` alguns fatos são dignos de nota.
+
+* O uso errôneo de uma variável diferente de `number` numa operação numérica normalmente resulta no valor `NaN` - *not a number*. Essa informação é relevante para detectarmos erros em nossas contas.
+
+```javascript
+    Math.sqrt('capitão américa') //Imprime NaN
+    
+    3/'8' //Imprime NaN
+
+    3 - 'sabonete' //NaN
+```
+
+* Divisão por zero resulta em `Infinity`
+
+```javascript
+    10/0 //Infinity
+
+    -10/0 // -Infinity
+```
+
+####String
+
+`Strings` são muito simples. Trata-se de um tipo que usamos para a representação de uma sequência de caracteres. Podemos envolver uma `string` com aspas duplas ou simples.
+
+```javascript
+
+    "Esta é uma string"
+
+    'esta é também uma string'
+
+```
+
+Para concaternamos uma sequencia de caracteres basta apenas o uso do operador `+`
+
+```javascript
+    var stringConcatenada = 'string' +  " concatenada"
+
+    console.log(stringConcatenada) //Imprime "string concatenada"
+```
+
+Podemos transformar uma `number` em uma string da seguinte forma
+
+```javascript
+    const numero = 3
+    console.log(typeof numero) //Imprime "number"
+
+    const convertido = numero + ''
+    console.log(convertido) // "3"
+    console.log(typeof convertido) //Imprime "string"
+``` 
+
+
+
+
+
+
+
+
+ 
+
+
+
 
 
 

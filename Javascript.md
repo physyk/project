@@ -46,11 +46,11 @@ while (numbero > 2) {
 ```javascript
 
 /*
-Esse bloco de texto não é lido pelo
-compilador
+    Esse bloco de texto não é lido pelo
+    compilador
 */
 
-//essa linha tão pouco
+//  essa linha tão pouco
 
 ```
 
@@ -67,8 +67,8 @@ Considere um exemplo prático para o uso de `var`.
 ```javascript
 
 if(3>2){
-var numero = 4
-console.log(numero) // IMPRIME "4" 
+    var numero = 4
+    console.log(numero) // IMPRIME "4" 
 }
 
 console.log(numero) // IMPRIME "4"
@@ -82,11 +82,11 @@ Vejamos o que ocorre ao usarmos `const` e `let` dentro do mesmo.
 ```javascript
 
 if(3>2){
-const numero = 4
-console.log(numero) // IMPRIME "4" 
+    const numero = 4
+    console.log(numero) // IMPRIME "4" 
 
-let outroNumero = 5
-console.log(outroNumero) // IMPRIME "5"
+    let outroNumero = 5
+    console.log(outroNumero) // IMPRIME "5"
 }
 
 console.log(numero) //AVISO DE ERRO: "numero está indefinido"

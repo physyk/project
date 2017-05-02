@@ -98,9 +98,9 @@ Perceba que no caso acima, a variáveis `numero` e `outroNumero` não estão dis
 
 A diferença entre `const` e `let` é mais pragmática. 
 
-Como sugere a nomenclatura, `const` é usada para a definição de constantes, não permitindo assim modificações futuras da variável. Ela será portanto `read-only`.
+Como sugere a nomenclatura, `const` é usada para a definição de constantes, não permitindo assim substituições futuras da variável. Ela será portanto `read-only`.
 
-A palavra-chave `let`, que pode ser traduzida livremente como "Seja", é mais flexível, pois permite mudanças futuras.
+A palavra-chave `let`, que pode ser traduzida livremente como "Seja", é mais flexível, pois permite substituições futuras.
 
 Considere os exemplos
 
@@ -122,7 +122,7 @@ Considere os exemplos
 
 ###Tipos de variáveis
 
-Em javascript as variáveis podem sete assumir tipos diferentes, mas apenas seis serão relevantes para nós:   
+Em javascript as variáveis podem assumir seis tipos diferentes, mas apenas cinco serão relevantes para nós:   
 
 * **Number** - como em `1`, `2`, e `3`
 * **Boolean** - `true` ou `false`
@@ -277,11 +277,58 @@ Por `boolean` designamos os valores lógicos `true` e `false`.
 
 ###Objeto
 
-//FAZER!
+Em essencia, quando falamos em `Object` estamos nos referindo a uma estrutura de dados comparável a um dicionário, onde associamos palavra-chave a informações específicas.
 
+Podemos criar um objeto por exemplo que represente a ficha cadastral de uma pessoa.
 
+Exemplo
 
-###Array
+```javascript
+
+    const pessoa = {
+        nome: 'Paulo Henrique',
+        idade: 85,
+        endereco: 'Rua das acácias, 15 - São Paulo',        
+    }
+
+```
+
+Acima temos `nome`, `idade`, e `endereco` como palavras-chave, indexando os dados da ficha cadastral. 
+
+A leitura dos dados de um objeto é simples. Basta procedermos  conforme o trecho de código abaixo.
+
+```javascript
+    console.log(pessoa['nome']) //Imprime "José de Assunção"
+    console.log(pessoa['idade']) //Imprime 25
+    console.log(pessoa.endereco) //Imprime "Rua das acácias, 15"
+```
+
+Perceba que utilizmos dois procedimentos. No primeiro colocando entre colchetes uma string com o nome da chave (`pessoa['nome']`), e no segundo a posicionamos, seguindo o nome da variável e um ponto (`pessoa.endereco`)
+
+Perceba que podemos inserir como dado qualquer tipo, seja uma `string` e `number` , comos os indexados por `nome` e `idade`, respectivamente.
+
+Se ainda desejarmos, podemos incluir todo o patrimônio do nosso personagem na mesma estrutura.
+
+```javascript
+
+    pessoa.patrimonio = [
+        {
+            descricao: 'Apartamento na Avenue Foch, Paris', 
+            valor: '3.000.000 euros'
+        },
+        {
+            descricao: 'Jato Embraer Legacy 500', 
+            valor: '5.000.000 reais'
+        }
+    ]
+
+```
+
+Um atribuição usando a notação `pessoa['patrimonio']` também é uma alternativa. 
+
+Pela centralidade desse tipo dentro do javascript, iremos dedicar uma seção inteira a ele, quando discutirmos o paradigma de orientações a objetos.
+
+##Array
 
 `Array` é uma coleção ordenada de valores. Cada elemento dessa coleção é indexada, podendo inclusive ser de tipos diferentes.
 
@@ -301,7 +348,9 @@ Caso quisermos saber o número de elementos de um `array` basta lermos sua propr
     console.log(a.length) //Imprime 3
 ```
 
-####Lendo e alterando um array
+
+
+###Lendo e escrevendo
 
 A indexação de um array é iniciada com o número 0. Assim caso quisermos ler o primeiro elemento, escrevemos `a[0]`; para o segundo `a[1]`; para o terceiro `a[2]` e daí por diante.
 
@@ -343,7 +392,6 @@ Perceba que estamos "alterando" uma constante, o que seria contrário ao que diz
 Exemplo:
 
 ```javascript
-
     //alteração da estrutura do 
     const a = [1,2,3,4,5]
     a[3] = - Infinity
@@ -356,7 +404,183 @@ Exemplo:
 Perceba que a alteração dos valores internos do array são permitidos, e não a reatribuição, a sua substituição.
 
 
+###Adicionando e deletando
+
+Da mesma forma que podemos substituir um elemento em uma array, podemos simplesmente adicionar outro na posição que desejarmos.
+
+Exemplo
+
+```javascript
+    const a = [1,2,3]
+    a[5] = 'abacate'
+
+    console.log(a) // Imprime [1,2,3, undefined, undefined, 'abacate']
+```
+
+Perceba que as posições 4 e 5 estão órfãs, por isso elas receberam o valor `undefined`. 
+
+Ainda podemos contar com outras estratégias para adicionar e ate mesmo deletar um item de uma coleção.
+
+O método `pop` por exemplo remove o último elemento de um array.
+
+Exemplo
+
+```javascript
+    const a = ["laranja", "abacate", "uva"]
+    const b = a.pop() 
+
+    console.log(b) //Imprime "uva"
+    console.log(a) // Imprime ["laranja", "abacate"]
+```
+
+A função `push` por outro insere um item na última poisição
+
+Exemplo
+
+ ```javascript
+    const a = ["laranja", "abacate", "uva"]
+    a.push("pera") 
+
+    console.log(a) // Imprime ["laranja", "abacate", "uva", "pera"]
+ ```
 
 
+Essas duas função serão suficientes para a manipulação de arrays durante o desenvolvimento desse trabalho. Para maiores informações visite (ARRAY REFERENCE EM PORTUGUES)
+
+Antes de encerramos essa seção é importante ressaltar que, apesar de corresponder a uma estrutura de dados com finalidades diferentes, `array` corresponde a uma especialização do tipo `object`. Essa afirmação pode ser verificada abaixo.
+
+```javascript
+    console.log(typeof [1,2,3,4,5,6]) //Imprime "object"
+```
 
 
+## Operadores
+
+#### Aritméticos
+
+Como mencionado acima, operações aritméticas básicas são feitas com o uso dos operadores `+`, `-`, `*`, `/`.
+
+```javascript
+    const a = 6 + 5 //11
+    const b = 6 - 5 //1
+    const c = 6 * 5 //30
+    const d = 6/5 //1.2
+```
+
+Acrescentamos a essa lista a negação unária, onde temos a mudança de sinal pelo acrescimo do sinal negativo antes de um número.
+
+```javascript
+    const a = 15  
+    const b = - (a+3) //-18
+```
+
+Podemos operar aritméticamente com booleans também. Nestes casos `true` valerá 1  e `false` igual 0.
+
+```javascript
+    true + true = 2
+    false + 3 = 0
+```
+
+Como dito há alguma seções atrás, a soma de uma string com qualquer tipo resulta em uma concatenação.
+
+```javascript
+    true + 'olá'  = 'trueolá'
+    3 + 'teste' = '3teste'
+    undefined + 'visão' = 'undefinedvisão'
+```
+
+Vale mencionar o operador `remainder`, a partir do qual obtemos o resto de uma divisão
+
+```javascript
+    5/2 // 1
+    5/98 //5    
+``` 
+
+Já para exponenciação usamos `**`
+
+```javascript
+    5**3 //125
+    2**3 //8
+    1**0 //1
+```
+
+Por fim temos os operadores incremento (`++`) e decremento (`--`) onde aumentamos ou diminuindo uma unidade de uma variável retornando um valor.
+
+Ambos podem ser expressos de duas formas: prefixa ou pósfixa. 
+
+Vamos a primera, a prefixa, onde operador precede o operando (`++variavel`)
+
+```javascript
+
+    //Incremento
+    var a = 1
+    var b = ++a //b= 2 e a =2
+
+    //Decremento
+    var c = 3
+    var d = --c // c = 2 e d = 2
+
+```
+
+Perceba que nos dois casos o operando foi modificado, retornando em seguida o valor assumido após a modificação.
+
+No caso do segunda, pósfixa, ao contrário, o valor original do operando é retornado e em seguida alterado.  
+
+```javascript
+
+    //Incremento
+    var a = 1
+    var b = a++ //b=1 e a=2
+
+    //Decremento
+    var c = 3
+    var d = c-- // c=3 e d = 2
+```
+
+### Operadores de igualdade
+
+Para a simples verificação de igualdades utilizamos os operadores `===` , `!==`. O valor resultante dessa verificação será simplesmente `true` ou `false`
+
+Com o primeiro, `===` nos certificamos se duas variaveis são iguais ou não. A mesma verificação é feito a respeito da diferença, quando usamos `!==`.
+
+Exemplos
+
+```javascript
+    const a = 5
+    const b = 3
+
+    console.log(a===b) //Imprime false
+    console.log(a!==b) //Imprime true
+```
+
+Para nos certificamos sobre a igualdade entre duas variáveis também podemos usar simplesmente `==` - dois sinais de igualdade ao invés de três. Contudo, como o seu uso não é recomendado, não entraremos em detalhes sobre a diferença entre `==` e `===`. Neste trabalho ficaremos com a segunda opção.  
+
+Uma nota sobre a igualdade entre dois objetos. 
+
+Algo curioso ocorre quando comparamos duas dessas duas estruturas. A forma que javascript interpreta a igualdade entre eles, não é mesma utilizada para comparar números.
+
+Observe o exemplo.
+
+```javascript
+    const pessoa1 = {nome:'fernando', idade:15}
+    const pessoa2 = {nome: 'fernando', idade: 15}
+
+    console.log(pessoa1 === pessoa2) //Imprime false
+```
+
+Sendo o conteúdo entre `pessoa1` e `pessoa2` idêntico, por que a igualdade é falsa ?
+
+A resposta para esse fato é explicada quando descobrimos que ao comparar dois objetos, javascript não compara conteúdo, e sim o endereço na memória reservado para paras cada uma das variáveis `pessoa1` e `pessoa2`, as suas referências, que são evidentemente diferentes.
+
+Agora observe uma situção diferente
+
+```javascript
+    const pessoa1  = {nome:'fernando', idade:15}
+    const pessoa2 = pessoa1
+
+    console.log(pessoa1===pessoa2) //Imprime true
+```
+
+Quando atribuímos a `pessoa1` a quantidade `pessoa2` estamos passando para ela o endereço na memória da primeira. Como a comparação entre objetos é feita por referência e não por valor, a igualdade entre elas será verdadeira.
+
+Como a estrutura `array` é uma especialização de `object`, o princípio descrito acima será aplicada a ela.

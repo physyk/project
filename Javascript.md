@@ -298,9 +298,9 @@ Acima temos `nome`, `idade`, e `endereco` como palavras-chave, indexando os dado
 A leitura dos dados de um objeto é simples. Basta procedermos  conforme o trecho de código abaixo.
 
 ```javascript
-    console.log(pessoa['nome']) //Imprime "José de Assunção"
-    console.log(pessoa['idade']) //Imprime 25
-    console.log(pessoa.endereco) //Imprime "Rua das acácias, 15"
+console.log(pessoa['nome']) //Imprime "José de Assunção"
+console.log(pessoa['idade']) //Imprime 25
+console.log(pessoa.endereco) //Imprime "Rua das acácias, 15"
 ```
 
 Perceba que utilizmos dois procedimentos. No primeiro colocando entre colchetes uma string com o nome da chave (`pessoa['nome']`), e no segundo a posicionamos, seguindo o nome da variável e um ponto (`pessoa.endereco`)

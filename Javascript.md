@@ -695,7 +695,7 @@ switch (numero) {
     avaliacao = 'O número é menor que 5';
     break;
   default:
-    avaliacao = 'A avalição será padrão;
+    avaliacao = 'A avalição será padrão';
     break;
 }
 ```

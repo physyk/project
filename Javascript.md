@@ -22,7 +22,7 @@ A sintaxe básica do Javascript é similar a outras linguagem de programação. 
 * Blocos são delimitados por chaves `{ }`. Exemplos:
 
 ```javascript
-if (numbero > 2) {
+if (numero > 2) {
     declaracao_1;
     declaracao_2;
     ...
@@ -32,7 +32,7 @@ if (numbero > 2) {
 
 
 ```javascript
-while (numbero > 2) {
+while (numero > 2) {
     declaracao_1;
     declaracao_2;
     ...
@@ -259,7 +259,7 @@ console.log(outroNumero + 3) //AVISO DE ERRO: "outroNumero não está definido"
 Perceba que em uma operação algébrica `null` é interpretado como 0. 
 
 
-### Boolean
+#### Boolean
 
 Por `boolean` designamos os valores lógicos `true` e `false`.
 
@@ -273,7 +273,7 @@ console.log(typeof falso) //Imprime "boolean"
 
 ```
 
-### Objeto
+#### Objeto
 
 Em essencia, quando falamos em `Object` estamos nos referindo a uma estrutura de dados comparável a um dicionário, onde associamos palavra-chave a informações específicas.
 
@@ -344,7 +344,7 @@ console.log(a.length) //Imprime 3
 
 
 
-### Lendo e escrevendo
+### Lendo e escrevendo arrays
 
 A indexação de um array é iniciada com o número 0. Assim caso quisermos ler o primeiro elemento, escrevemos `a[0]`; para o segundo `a[1]`; para o terceiro `a[2]` e daí por diante.
 
@@ -395,7 +395,7 @@ a = 3 // AVISO DE ERRO: "reatribuição de variável constante"
 Perceba que a alteração dos valores internos do array são permitidos, e não a reatribuição, a sua substituição.
 
 
-### Adicionando e deletando
+### Adicionando e deletando itens
 
 Da mesma forma que podemos substituir um elemento em uma array, podemos simplesmente adicionar outro na posição que desejarmos.
 
@@ -700,7 +700,7 @@ switch (numero) {
 }
 ```
 
-Acima estamos avaliando o valor da variável número. Vê-se que ela é comparada com todos os casos - `case` - seguintes. Sendo nenhum seja verdadeiro, o bloco que corresponde a `default` é processado.
+Acima estamos avaliando o valor da variável número. Vê-se que ela é comparada com todos os casos - `case` - seguintes. Sendo nenhum verdadeiro, o bloco que corresponde a `default` é processado.
 
 Para o funcionamento correto dessa estrutura, devemos finalizar cada caso com a palavra-chave `break`.
 

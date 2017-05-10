@@ -282,13 +282,11 @@ Podemos criar um objeto por exemplo que represente a ficha cadastral de uma pess
 Exemplo
 
 ```javascript
-
 const pessoa = {
     nome: 'Paulo Henrique',
     idade: 85,
     endereco: 'Rua das acácias, 15 - São Paulo'
 }
-
 ```
 
 Acima temos `nome`, `idade`, e `endereco` como palavras-chave, indexando os dados da ficha cadastral. 
@@ -702,7 +700,7 @@ switch (numero) {
 }
 ```
 
-Acima estamos avaliando o valor da variável número. No exemplo em questão, a variável sera comparada a todos os casos abaixo. Caso nenhum seja verdadeiro o bloco que corresponde à `default` será processado.
+Acima estamos avaliando o valor da variável número. Vê-se que ela é comparada com todos os casos - `case` - seguintes. Sendo nenhum seja verdadeiro, o bloco que corresponde a `default` é processado.
 
 Para o funcionamento correto dessa estrutura, devemos finalizar cada caso com a palavra-chave `break`.
 

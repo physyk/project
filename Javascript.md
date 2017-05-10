@@ -158,7 +158,6 @@ Para procedemos com as quatro operações básicas, os já conhecidos operadores
 Caso necessitarmos de funções mais elaboradas, como um cálculo trigonométrico ou logarítmico, por exemplo, possivelmente a biblioteca `Math` nos dará o que precisamos.  Exemplifiquemos alguns de seus métodos.
 
 ```javascript
-
 Math.abs(x) //Valor absolute de -3.
 Math.cos(x) //cosseno de um número
 Math.sin(x) //seno de um número
@@ -171,7 +170,6 @@ Math.round(x) // retorna valor arredondado de um número x para o inteiro mais p
 Math.sqrt(x) // Retorna a raiz quadrada
 Math.floor(x) //Retorna o maior inteiro que é menor ou igual a x. Exemplo: Math.floor(2.9) = 2
 Math.ceil(x) //Retorna o menor inteiro que é maior ou igual a x. Exemplo: Math.ceil(2.9) = 3
-
 ```
 
 Quando falamos de `Number` alguns fatos são dignos de nota.
@@ -451,7 +449,7 @@ console.log(typeof [1,2,3,4,5,6]) //Imprime "object"
 
 ## Operadores
 
-#### Aritméticos
+#### Operadores aritméticos
 
 Como mencionado acima, operações aritméticas básicas são feitas com o uso dos operadores `+`, `-`, `*`, `/`.
 
@@ -503,7 +501,7 @@ Por fim temos os operadores incremento (`++`) e decremento (`--`) onde aumentamo
 
 Ambos podem ser expressos de duas formas: prefixa ou pósfixa. 
 
-Vamos a primera, a prefixa, onde operador precede o operando (`++variavel`)
+Vamos à primera, a prefixa, onde operador precede o operando (`++variavel`)
 
 ```javascript
 
@@ -552,7 +550,7 @@ Para nos certificamos sobre a igualdade entre duas variáveis também podemos us
 
 Uma nota sobre a igualdade entre dois objetos. 
 
-Algo curioso ocorre quando comparamos duas dessas duas estruturas. A forma que javascript interpreta a igualdade entre eles, não é mesma utilizada para comparar números.
+Algo curioso ocorre quando comparamos duas dessas duas estruturas. A forma que javascript interpreta a igualdade entre eles, não é mesma utilizada para comparar números ou strings, por exemplo.
 
 Observe o exemplo.
 
@@ -578,4 +576,137 @@ console.log(pessoa1===pessoa2) //Imprime true
 
 Quando atribuímos a `pessoa1` a quantidade `pessoa2` estamos passando para ela o endereço na memória da primeira. Como a comparação entre objetos é feita por referência e não por valor, a igualdade entre elas será verdadeira.
 
-Como a estrutura `array` é uma especialização de `object`, o princípio descrito acima será aplicada a ela.
+Como a estrutura `array` é uma especialização de `object`, o princípio descrito acima será aplicada também a ela.
+
+### Operadores de comparação
+
+O exemplo abaixo ilustra o uso de operadores de comparação em javascript. 
+
+```javascript
+2>3 //false
+3<=3 //true
+4>3 //true
+5>=10 //true
+```
+
+Como é vísivel não há diferenças relevantes com relação a outras linguagens.
+
+### Operadores lógicos
+
+Para os operadores lógicos temos `&&` (*and*) e `||` (*or*). Exemplos abaixo.
+
+```javascript
+var a = true && false;  // a => false
+var b = true || false;  // b => true
+```
+
+Podemos também negar logicamente uma variável, utilizando o operador 
+
+```javascript
+var a = true;
+console.log(!a) //Imprime false
+
+var b = false;
+console.log(!b) //Imprime true
+```
+
+Com o mesmo artifício podemos verificar se o conteúdo de uma variável está indefinido ou nulo.
+
+```javascript
+var a = null
+console.log(!a) //Imprime true
+
+var b 
+console.log(b) //Imprime undefined
+
+var c = !b
+console.log(c) //Imprime true
+
+var d = 0
+console.log(!d) //Imprime true
+
+var e = ''
+console.log(!e) //Imprime true
+
+var f = 7
+console.log(!f) //Imprime false
+
+var g = 'batata'
+console.log(!g) //Imprime false
+```
+
+Perceba pelos casos em que `var d = 0` e  `var e = ''`, o número zero e strings vazias também são interpretadas como conteúdo nulo. Fato que explica o porquê que elas se tornam verdadeiras quando negadas.
+
+Por outro lado, pelos dois últimos exemplos, percebemos que se uma variável contém conteúdo não-nulo a sua negação resultará em um valor `false`. Lê-se portanto que "as variáveis `f` e `g` **NÃO** estão vazias."
+
+
+### Operador `in`
+
+Para verificarmos se um objeto contém uma determinada propriedade, usamos o operador `in`. Exemplos
+
+```javascript
+const a = {
+    prop1: 'valor 1', 
+    prop2: 'valor 2'
+}
+
+console.log('prop2' in a) //Imprime true
+console.log('prop3' in b) //Imprime false
+```
+
+
+## Afirmações
+
+### Afirmação condicional
+
+#### if...else
+
+Uma afirmação `if` é executada se uma condição específica é atendida. Em caso contrários as afirmações `else` são testadas.
+
+Façamo-nos claro com um exemplo
+
+```javascript
+if(a===b){
+    console.log("a é idêntico b")
+}else if(b === 3){
+    console.log("b é idêntico a 3")
+}else if(!c){
+    console.log('c contém conteúdo nulo ou indefinido')
+}else {
+    console.log('Nenhuma das condições acima foram atendidas')
+}
+```
+
+No exemplo acima, se `a` for identico a `b` o bloco `if` será executado. 
+
+Caso contrário, a afirmação dada por `else if` será verificada. Sendo verdadeiro, seu bloco será executado. Se falso, o compilador lerá o próximo `else if`. 
+
+Se todos as asserções anteriores a `else` forem falsas o conteúdo do seu bloco será processado.
+
+#### switch
+
+A estrutura `switch` nos permite avaliar o valor de uma determinada variável. O bloco referente à avalição correta será executado.
+
+```javascript
+var numero;
+switch (numero) {
+  case 5:
+    avaliacao = 'A variável número é inteira';
+    break;
+  case 3.5:
+    avaliacao = 'O número é menor que 5';
+    break;
+  default:
+    avaliacao = 'A avalição será padrão;
+    break;
+}
+```
+
+Acima estamos avaliando o valor da variável número. No exemplo em questão, a variável sera comparada a todos os casos abaixo. Caso nenhum seja verdadeiro o bloco que corresponde à `default` será processado.
+
+Para o funcionamento correto dessa estrutura, devemos finalizar cada caso com a palavra-chave `break`.
+
+
+
+
+

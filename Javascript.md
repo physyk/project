@@ -769,7 +769,7 @@ Com o código acima, iteramos sobre os itens de um array, o de `itens` nesse cas
 
 ### Array.map 
 
-Já o Array.map nos permite, através da iteração, transformar os elementos do `array`.
+Já o Array.map nos permite transformar os elementos do `array` através da iteração.
 
 ```javascript
 const numeros = [1,2,3,4,5]

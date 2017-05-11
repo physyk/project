@@ -141,8 +141,8 @@ Para descrobrirmos o tipo de uma variável podemos usar o operador `typeof`. Exe
 var numero = 3
 console.log(typeof numero) //Imprime "number"
 
-var presidentes = {brasil: 'Michel Temer', eua: 'Donald Trump'} 
-console.log(typeof presidentes) //Imprime "object"
+var palavras = {brasil: 'Michel Temer', eua: 'Donald Trump'} 
+console.log(typeof palavras) //Imprime "object"
 
 const indefinido
 console.log(typeof indefinido) //Imprime 'undefined'
@@ -704,7 +704,84 @@ Acima estamos avaliando o valor da variável número. Vê-se que ela é comparad
 
 Para o funcionamento correto dessa estrutura, devemos finalizar cada caso com a palavra-chave `break`.
 
+### Loops e iteração
 
+Loops são estruturas úteis quando desejamos a repetição de um conjunto de procedimentos. Em javscript há diversas formas de repetir um determinado processo ou conjunto de passos. Apesar da linguagem ofecerer um bom número delas, destacaremos apenas o `for`, `do...while` e outras duas úteis para iteração de arrays  `forEach` e `map` . 
+
+#### for
+
+O uso do `for` segue a seguinte forma.
+
+```javascript
+for(inicialiazao; condição; incremento){
+    bloco de codigo    
+}
+```
+
+Para fins de ilustração, considere os exemplos abaixo 
+
+```javascript
+for(let i = 100; i>=1; --i){
+    console.log(i)
+}
+```
+
+No exemplo acima,iniciamos a nossa variável `i` com valor igual a 100 (`let i = 100`). É com esse valor que processamos as instruções do bloco.
+
+Na iteração seguinte, `i` é decrementado (`i--`), passando a valer 99 na nova iteração.
+
+A execução das instruções do bloco se repetirá até que  `i` esteja de acordo com o limite estabelecido, neste caso "maior ou igual a um" (`i>=1`)
+
+### do...while
+
+Em tradução livre *do...while* corresponde à "faça...enquanto". É exatamente isso o que acontece no exemplo a seguir.
+
+```javascript
+var i = 0;
+do{
+    ++i
+}while(i<=100)
+```
+
+No trecho acima `i` é incrementado enquanto seu valor é inferior ou igual a 100.
+
+Podemeos de expressar as mesmas instruções com uso de um simples `while`.
+
+```javascript
+while(i<=100){
+    ++i
+}
+```
+
+### Array.forEach
+
+O `Array.forEach` é uma das estruturas mais utilizadas para iteração de arrays. Exemplificamos o seu uso a seguir.
+
+```javascript
+const itens = ['Abacaxi', 1, 105]
+
+itens.forEach(function(item, index){
+    console.log(item, index)
+})
+```
+
+Com o código acima, iteramos sobre os itens de um array, o de `itens` nesse caso. Para cada item da coleção a função é executada, tendo como o primeiro argumento o elemento corrente e o respectivo item. Nos seções seguintes faremos uma discussão aprofundada sobre funções.
+
+### Array.map 
+
+Já o Array.map nos permite, através da iteração, transformar os elementos do `array`.
+
+```javascript
+const numeros = [1,2,3,4,5]
+
+const resultado = numeros.map(function(numero){
+    return numero*2 
+})
+
+console.log(resultado) //Imprime [2,4,6,8,10]
+```
+
+Perceba que cada valor de `numero` foi dobrado. O resultado final desse processamento é retornado para a variável `resultado`.
 
 
 

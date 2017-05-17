@@ -815,11 +815,11 @@ console.log(resultado) //Imprime [2,4,6,8,10]
 
 Perceba que cada valor de `numero` foi dobrado. O resultado final desse processamento é retornado para a variável `resultado`.
 
-## Programação orientada a objetos - Noções Elementares.
+## Programação orientada a objetos. Noções Elementares.
 
 Como descrito anteriormente, objeto é um tipo cuja estrutura é comparada a um dicionários. Nele associamos palavras-chave (propriedades) a determidados valores, de qualquer tipo. Com ele podemos fazer a descrição de qualquer entidade, seja ela um poste, um cachorro ou até mesmo deputado. 
 
-Tomemos um cachorro como exemplo. Como poderíamos descrevê-lo?  Um objeto representativo dessa entidade poderia ser da seguinte forma.
+Tomemos um cachorro como exemplo. Como poderíamos descrevê-lo?  Um objeto representativo dessa entidade poderia ser dado seguinte forma.
 
 ```javascript
 const felpudo = {
@@ -840,7 +840,7 @@ felpudo.latir = function (){
 felpudo.latir() // "Au Au"
 ```
 
-A tarefa de descrever cães passará ficar complicada se desejarmos classificar outros. Diante da necessidade de descrever mais um farímos.
+A tarefa de descrever cães passará ficar complicada se desejarmos classificar outros. Ao descrever mais um poderíamos escrever:
 
 ```javascript
 const barney = {
@@ -876,22 +876,44 @@ class Cao {
 }
 ```
 
-Atente para a função `constructor`. Ela é a porta de entrada da classe. Como argumentos passamos todos os dados relevantes para criação do do nosso cão. 
+Atente para a função `constructor`. Ela é a porta de entrada da classe. Como argumentos passamos a ela todos os dados relevantes para criação do nosso cão. 
 
-Com `this` temos acesso ao escopo do objeto. Portanto com `this.pelagem = pelagem` estamos instruindo a classe para criar dentro dele uma varivel `pelagem` cujo valor é dado pela variável de mesmo nome, recebido pelo construtor.
+Com `this` temos acesso ao escopo do objeto. Portanto com `this.raca = raca` estamos instruindo a classe para criar dentro dela uma varivel `raca` cujo valor é dado pela variável de mesmo nome, recebido pelo construtor.
  
 
 Com a classe estabelecida, a tarefa de criar um ou um milhão de cães passa a ser trivial.
 
 ```javascript
     const felpudo = new Cao('Felpudo', 'Chow Chow', 20)
+   
     const pangare = new Cao('Pangare', 'Dálmata', 10)
+    pangare.latir() // Imprime "Au au"
    
     const minotauro = new Cao('Minotauro', 'Pit Bull', 50)
     minotauro.correr() //Imprime "Correndo a 50km/h"
 ```
 
-Perceba que ao fazermos `this.velocidadeMaxima = velocidade` no construtor, todo objeto passa a a ter acesso a essa propriedade. É por esse motivo que, no exemplo acima, conseguirmos imprimir o seu valor, ao colocarmos o nosso cão minotauro para correr - `minotauro.correr()`.
+Perceba que ao fazermos `this.velocidadeMaxima = velocidadeMaxima` no construtor, todo objeto passa a a ter acesso a essa propriedade. E é por esse motivo que, no exemplo acima, colocando o nosso cão minotauro para correr - `minotauro.correr()` - conseguimos imprimir o seu valor,.
+
+
+## Considerações finais
+
+Durante este capítulo abordamos apenas os aspectos essenciais do Javascript, necessários para evolução dos próximos capítulos. Mais informações estão disoponiveis em ....
+
+<!--TODO: MELHORAR!!!!!!!!!! -->
+
+<!--Com esta seção buscamos apenas abordar aspectos essenciais para discussão dos proximos capítulos. A tarefa de descrever por completo a programação orientada a objetos exigiria algumas centenas de pagina.
+
+Nessa seção buscamos apenas pincelar aspectos
+
+Para compreendermos o 
 
 
 
+
+A 
+
+Programação orientada a objetos é um topico que para ser coberto por inteiro, necessitariamos a quantidade de paginas 
+
+
+-->

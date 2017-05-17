@@ -130,6 +130,7 @@ Em javascript as variáveis podem assumir seis tipos diferentes, mas apenas cinc
 * **String** - usado para representação textual, como "Por que não me liberam dessa monografia?"
 * **Object** - Similar a um dicionário, esse tipo permite a associação de variáveis a palavras-chave. Explicações a frente.  
 
+
 Diferentemente de outras linguagens, como C, C++ ou Java, não é exigido durante a declaração da variável a explicitação o seu tipo. Para tanto, o uso de `var`, `let` ou `const` é suficiente.
 
 Dizemos que Javacript é uma linguagem de "tipagem dinânica", pois enquanto a variável `numero` pode equivaler a um número, na linha seguinte podemos substituir o seu valor por um sequência de caracteres, uma `string`.
@@ -704,6 +705,37 @@ Acima estamos avaliando o valor da variável número. Vê-se que ela é comparad
 
 Para o funcionamento correto dessa estrutura, devemos finalizar cada caso com a palavra-chave `break`.
 
+### Funções
+
+Com funções podemos criar rotinas executáveis. Exemplo:
+
+```javascript
+function dobrar (numero){
+    return numero*2
+}
+
+console.log(dobrar(4)) //Imprime 8
+console.log(dobrar(2000)) //Imprime 4000
+```
+
+Acima temos uma função que retorna o dobro de qualquer numero entregue como argumento.
+
+Podemos escreve uma funçaõ, também seguinte forma:
+
+```javascript
+const dobrar = (numero) => {
+    return numero*2
+}
+```
+
+Ainda de forma mais sucinta 
+
+```javascript
+const dobrar = numero => numero*2
+console.log(dobrar(10)) //Imprime 20
+```
+
+
 ### Loops e iteração
 
 Loops são estruturas úteis quando desejamos a repetição de um conjunto de procedimentos. Em javscript há diversas formas de repetir um determinado processo ou conjunto de passos. Apesar da linguagem ofecerer um bom número delas, destacaremos apenas o `for`, `do...while` e outras duas úteis para iteração de arrays  `forEach` e `map` . 
@@ -732,7 +764,7 @@ Na iteração seguinte, `i` é decrementado (`i--`), passando a valer 99 na nova
 
 A execução das instruções do bloco se repetirá até que  `i` esteja de acordo com o limite estabelecido, neste caso "maior ou igual a um" (`i>=1`)
 
-### do...while
+#### do...while
 
 Em tradução livre *do...while* corresponde à "faça...enquanto". É exatamente isso o que acontece no exemplo a seguir.
 
@@ -753,7 +785,7 @@ while(i<=100){
 }
 ```
 
-### Array.forEach
+#### Array.forEach
 
 O `Array.forEach` é uma das estruturas mais utilizadas para iteração de arrays. Exemplificamos o seu uso a seguir.
 
@@ -767,7 +799,7 @@ itens.forEach(function(item, index){
 
 Com o código acima, iteramos sobre os itens de um array, o de `itens` nesse caso. Para cada item da coleção a função é executada, tendo como o primeiro argumento o elemento corrente e o respectivo item. Nos seções seguintes faremos uma discussão aprofundada sobre funções.
 
-### Array.map 
+#### Array.map 
 
 Já o Array.map nos permite transformar os elementos do `array` através da iteração.
 
@@ -782,6 +814,84 @@ console.log(resultado) //Imprime [2,4,6,8,10]
 ```
 
 Perceba que cada valor de `numero` foi dobrado. O resultado final desse processamento é retornado para a variável `resultado`.
+
+## Programação orientada a objetos - Noções Elementares.
+
+Como descrito anteriormente, objeto é um tipo cuja estrutura é comparada a um dicionários. Nele associamos palavras-chave (propriedades) a determidados valores, de qualquer tipo. Com ele podemos fazer a descrição de qualquer entidade, seja ela um poste, um cachorro ou até mesmo deputado. 
+
+Tomemos um cachorro como exemplo. Como poderíamos descrevê-lo?  Um objeto representativo dessa entidade poderia ser da seguinte forma.
+
+```javascript
+const felpudo = {
+    nome: 'Felpudo',
+    raca: 'Chow Chow',
+    pelagem: 'Longa', 
+    idade: '5 anos'
+}
+```
+
+Podemos associar comportamentos ao nosso cão, introduzindo um função "latir".
+
+```javascript
+felpudo.latir = function (){
+    console.log("AU AU")
+}
+
+felpudo.latir() // "Au Au"
+```
+
+A tarefa de descrever cães passará ficar complicada se desejarmos classificar outros. Diante da necessidade de descrever mais um farímos.
+
+```javascript
+const barney = {
+    nome: 'Barney',
+    raca: 'Pastor Alemão',
+    pelagem: 'Curta', 
+    idade: '3 anos', 
+    latir: function (){
+        console.log("Au Au")
+    }
+}
+```
+
+É com objetivo de facilitar essa tarefa que podemos recorrer a uma *Classe*. Classe são estruturas comparáveis a uma fôrma, úteis portanto para modelar entidades. Poderímos, por exemplo, modelar um cão da seguinte forma.
+
+
+```javascript
+class Cao {
+    
+    constructor(nome, raca, velocidadeMaxima){
+        this.nome = nome
+        this.raca = raca
+        this.velocidadeMaxima = velocidadeMaxima
+    }
+
+    latir(){
+        console.log("AU AU")        
+    }
+
+    correr(){
+        console.log("Correndo a "+this.velocidadeMaxima+"km/h")
+    }
+}
+```
+
+Atente para a função `constructor`. Ela é a porta de entrada da classe. Como argumentos passamos todos os dados relevantes para criação do do nosso cão. 
+
+Com `this` temos acesso ao escopo do objeto. Portanto com `this.pelagem = pelagem` estamos instruindo a classe para criar dentro dele uma varivel `pelagem` cujo valor é dado pela variável de mesmo nome, recebido pelo construtor.
+ 
+
+Com a classe estabelecida, a tarefa de criar um ou um milhão de cães passa a ser trivial.
+
+```javascript
+    const felpudo = new Cao('Felpudo', 'Chow Chow', 20)
+    const pangare = new Cao('Pangare', 'Dálmata', 10)
+   
+    const minotauro = new Cao('Minotauro', 'Pit Bull', 50)
+    minotauro.correr() //Imprime "Correndo a 50km/h"
+```
+
+Perceba que ao fazermos `this.velocidadeMaxima = velocidade` no construtor, todo objeto passa a a ter acesso a essa propriedade. É por esse motivo que, no exemplo acima, conseguirmos imprimir o seu valor, ao colocarmos o nosso cão minotauro para correr - `minotauro.correr()`.
 
 
 

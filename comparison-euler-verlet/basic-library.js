@@ -1,75 +1,68 @@
 function degToRad(deg) {
-    return Math.PI / 180 * deg
+	return Math.PI / 180 * deg
 }
 
 function cos(deg) {
-    return Math.cos(degToRad(deg))
+	return Math.cos(degToRad(deg))
 }
 
 function sin(deg) {
-    return Math.sin(degToRad(deg))
+	return Math.sin(degToRad(deg))
 }
 
 function clone(object) {
-    return Object.assign({}, object)
+	return Object.assign({}, object)
 }
 
 
-function verlet(r0, v0, aceleration, deltaT) {
-    let r, v, a = aceleration(r0,v0)
-    
-    r = r0 + v0 * deltaT + a / 2 * Math.pow(deltaT, 2)
-    v = v0 + (aceleration(r,v0) + a) / 2 * deltaT
+function verlet(r0, v0, newAceleration, deltaT, lastAceleration) {
+	let r = r0 + v0 * deltaT + lastAceleration / 2 * deltaT ** 2
+		, v = v0 + (lastAceleration + newAceleration) / 2 * deltaT
 
-    return { r, v }
+	return { r, v }
 }
 
 
-function euler(r0, v0, aceleration, deltaT) {
-    let r, v
+function euler(r0, v0, newAceleration, timeStep) {
+	let r, v
 
-    r = r0 + v0 * deltaT
-    v = v0 + aceleration(r,v0) * deltaT
+	r = r0 + v0 * timeStep
+	v = v0 + newAceleration * timeStep
 
-    return { r, v }
+	return { r, v }
 }
 
 
 function simulation(simulationMethod, importInfo) {
 
-    const {iterations, timeStep, initialConditions, acelerationX, acelerationY} = importInfo
+	const { numberIterations, timeStep, initialConditions, acelerationCalculator } = importInfo
 
-    let lastSimulationData = clone(initialConditions)
-        , simulationData = { x: [], y: [] }
+	let lastSimulationData = clone(initialConditions)
+		, simulationData = { r: [], t: [] }
 
-    for (let i = 1; i <= iterations; i++) {
+	for (let i = 1; i <= numberIterations; i++) {
+		pastTime = i * timeStep
 
-        const
-            {r: rx, v: vx} = simulationMethod(lastSimulationData.r.x, lastSimulationData.v.x, acelerationX, timeStep)
-            , {r: ry, v: vy} = simulationMethod(lastSimulationData.r.y, lastSimulationData.v.y, acelerationY, timeStep)
-            , iterationData = {
-                r: { x: rx, y: ry },
-                v: { x: vx, y: vy }
-            }
+		let newAceleration = acelerationCalculator(pastTime)
 
-        simulationData.x.push(iterationData.r.x)
-        simulationData.y.push(iterationData.r.y)
+		const { r0, v0, a0 } = lastSimulationData
+			, { r, v } = simulationMethod(r0, v0, newAceleration, timeStep, a0)
 
-        lastSimulationData = clone(iterationData)
+		simulationData.r.push(r)
+		simulationData.t.push(pastTime)
 
-    }
+		lastSimulationData = { r0: r, v0: v, a0: newAceleration }
+	}
 
-    return simulationData
-
-
+	return simulationData
 }
 
 
-function numericalSolution(simulationInitialInfo){
+function numericalSolution(simulationInfo) {
 
-    const eulerData = simulation(euler, simulationInitialInfo)
-        , verletData = simulation(verlet, simulationInitialInfo)
+	const eulerData = simulation(euler, simulationInfo)
+		, verletData = simulation(verlet, simulationInfo)
 
-    return { eulerData, verletData }
+	return { eulerData, verletData }
 
 }
